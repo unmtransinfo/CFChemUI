@@ -1,6 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFlask} from "@fortawesome/pro-thin-svg-icons";
-import React from "react";
 
 export default function SiteHeader() {
     return (
