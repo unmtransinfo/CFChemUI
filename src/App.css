@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-transparent;
+}
+
+main {
+    @apply z-10 min-h-[100vh] dark:bg-gray-950 dark:text-white dark:shadow-[inset_0_5rem_5rem_0_rgb(0_0_0_/_0.7)] light:text-gray-950 light:bg-gray-50 light:shadow-none transition-all;
+}
+
+main::before {
+    @apply h-full w-full absolute top-0 bg-fixed z-0 content-[''] opacity-40;
+    background-image: url(../public/1000-100-5-monochrome.png);
+}
+
+.page-container {
+    @apply md:max-w-screen-md mx-auto p-6 pt-32;
+}
+
+#search-results {
+    @apply dark:bg-gray-700/30 dark:text-white bg-white text-black backdrop-blur-md shadow-lg rounded-2xl mt-8 p-8;
+}
+
+#btn-theme-mode {
+    @apply min-w-0 absolute top-5 right-5 h-10 w-10 bg-transparent dark:hover:bg-gray-800 light:hover:bg-gray-100 rounded-full;
+}
