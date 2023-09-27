@@ -47,8 +47,6 @@ function App() {
 
     useEffect(() => {
         const fetchData = async () => {
-            setSearchResults([]);
-
             if (searchInput && searchInput.length) {
                 setLoader(true);
 
@@ -66,6 +64,7 @@ function App() {
     }, [ searchInput ]);
 
     const onSearchInput = (e) => {
+        setSearchResults([]);
         setSearchInput(e);
     }
 
