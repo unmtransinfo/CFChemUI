@@ -1,86 +1,149 @@
-import React, { useState } from 'react'
+import {useEffect, useState} from 'react'
 import '../dist/App.css'
 import {Button, Input} from "@nextui-org/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faLightbulb, faLightbulbOn} from '@fortawesome/pro-thin-svg-icons'
+import {faLightbulb, faLightbulbOn, faChartNetwork, faSpinner, faCircleNotch} from '@fortawesome/pro-light-svg-icons'
 import SiteHeader from "./components/SiteHeader";
 import {Listbox, ListboxItem} from "@nextui-org/react";
+// import axios from "axios";
+
+const dummyData = [
+    {'title': 'foo', 'desc': 'test description'},
+    {'title': 'bar', 'desc': 'test description'},
+    {'title': 'foobar', 'desc': 'test description'}
+];
+
+async function fetchSearchResults(inputVal: string) {
+    // @todo: api endpoint
+    //  const apiUrl = `http://url/api/data/${inputVal}`;
+
+    return new Promise(resolve => {
+        setTimeout(() => resolve(dummyData.filter(
+            x => x.title.includes(inputVal)
+        )), 1000);
+    })
+
+    // @todo: a real fetch
+    // return await axios.get(apiUrl)
+    //     .then(promise => {
+    //         return promise.data;
+    //     })
+    //     .catch(e => {
+    //         console.error(e);
+    //     })
+}
 
 function App() {
     const [darkMode, setDarkMode] = useState(true);
-    const [showSearchResults, queryAPI] = useState(false);
-
-    let searchResults;
+    const [searchResults, setSearchResults] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
+    const [loader, setLoader] = useState(false);
+    const searchResultBullet = <FontAwesomeIcon icon={faChartNetwork} className="text-primary mr-2" />;
 
     const themeMode = () => {
         // 👇️ toggle isActive state on click
         setDarkMode(darkMode => !darkMode);
     };
 
-    const fetchSearchResults = () => {
-        searchResults = 'foo';
-        queryAPI(showSearchResults => true);
-    };
+    const fetchData = async () => {
+        if (searchInput && searchInput.length) {
+            console.log('pre', loader)
+            setLoader(true);
 
-    const searchResultStartContent = '';
+            const data = await fetchSearchResults(searchInput);
+
+            if (data.length) {
+                setSearchResults(data);
+            } else {
+                setSearchResults([]);
+            }
+        } else {
+            setSearchResults([]);
+        }
+
+        setLoader(false);
+        console.log('post', loader)
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [ searchInput, loader ]);
+
+    const onSearchInput = (e) => {
+        setSearchInput(e);
+    }
 
     return (
-        <main className={darkMode ? 'dark' : 'light'}>
+        <main className={(darkMode ? 'dark' : 'light') + ' text-foreground bg-background'}>
+            <div className="relative z-10">
 
-            <Button id="btn-theme-mode" size="md" onClick={themeMode}>
-                <FontAwesomeIcon icon={darkMode ? faLightbulb : faLightbulbOn} />
-            </Button>
+                <Button id="btn-theme-mode" size="md" onClick={themeMode}>
+                    <FontAwesomeIcon icon={darkMode ? faLightbulb : faLightbulbOn} />
+                </Button>
 
-            <div className="page-container">
+                <div className="page-container">
 
-                {/* @todo: move to component */}
-                <section id="header-search">
-                    <SiteHeader />
+                    {/* @todo: move to component */}
+                    <section id="header-search">
+                        <SiteHeader />
 
-                    <div className="w-1/2 m-auto">
-                        <Input
-                            key="default"
-                            type="email"
-                            color="default"
-                            label="Search"
-                            placeholder="Start typing"
-                            defaultValue=""
-                            className=""
-                            onKeyUp={fetchSearchResults}
-                        />
-                    </div>
-                </section>
+                        <div className="w-1/2 m-auto">
+                            <Input
+                                id="search-input"
+                                key="default"
+                                type="email"
+                                color="default"
+                                label="Search"
+                                placeholder="Start typing"
+                                defaultValue=""
+                                onValueChange={onSearchInput}
+                                isClearable
+                                onClear={() => setSearchResults([])}
+                                classNames={{
+                                    inputWrapper: [
+                                        "border",
+                                        "dark:border-gray-600/40",
+                                        "backdrop-blur-md",
+                                        "dark:bg-gray-600/30",
+                                        "dark:hover:bg-gray-600/50",
+                                        "dark:focus:bg-gray-600/50",
+                                        "dark:active:bg-gray-600/50",
+                                        "dark:group-data-[focused=true]:bg-gray-600/50",
+                                    ],
+                                }}
+                            />
+                        </div>
+                    </section>
 
-                {/* @todo:
-                only display when search results are returned
-                move to component
-                */}
-                <section id="search-results" className={showSearchResults ? 'flex' : 'hidden'}>
-                    {/* @todo: {searchResults} */}
-                    <Listbox variant="flat" aria-label="Search Results" className="gap-2">
-                        <ListboxItem
-                            key="1"
-                            description="Description"
-                            startContent={searchResultStartContent}
+                    {/* @todo:
+                    only display when search results are returned
+                    move to component
+                    */}
+                    <section id="search-results">
+                        <div className={'loader ' + (loader ? 'active' : '')}>
+                            <FontAwesomeIcon icon={faCircleNotch} className="text-primary animate-spin" />
+                        </div>
+
+                        <Listbox id="search-results-list" variant="flat" aria-label="Search Results"
+                            className={(searchResults.length ? 'active' : '') + ' gap-0 p-0'}
                         >
-                            Result #1
-                        </ListboxItem>
-                        <ListboxItem
-                            key="2"
-                            description="Description"
-                            startContent={searchResultStartContent}
-                        >
-                            Result #2
-                        </ListboxItem>
-                        <ListboxItem
-                            key="3"
-                            description="Description"
-                            startContent={searchResultStartContent}
-                        >
-                            Result #3
-                        </ListboxItem>
-                    </Listbox>
-                </section>
+                            {
+                                searchResults.map((result, index) => (
+                                    <ListboxItem
+                                        key={index}
+                                        description={result.desc}
+                                        startContent={searchResultBullet}
+                                        className="search-result"
+                                        color="primary"
+                                    >
+                                        {result.title}
+                                    </ListboxItem>
+                                ))
+                            }
+                        </Listbox>
+                    </section>
+                </div>
+
             </div>
         </main>
     )

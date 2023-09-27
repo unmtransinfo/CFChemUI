@@ -13,17 +13,25 @@ export default {
   darkMode: 'class',
   plugins: [nextui({
     defaultTheme: 'dark',
-    // layout: {}, // common layout tokens (applied to all themes)
-    // themes: {
-    //   light: {
-    //     layout: {}, // light theme layout tokens
-    //     colors: {}, // light theme colors
-    //   },
-    //   dark: {
-    //     layout: {}, // dark theme layout tokens
-    //     colors: {}, // dark theme colors
-    //   },
-    // }
+    addCommonColors: true,
+    layout: {}, // common layout tokens (applied to all themes)
+    themes: {
+      light: {
+        layout: {},
+        colors: {
+          background: '#bcd1eb'
+        },
+      },
+      dark: {
+        // layout: {}, // dark theme layout tokens
+        colors: {
+          background: '#041529',
+          primary: {
+            DEFAULT: '#30e0c9'
+          }
+        },
+      },
+    }
   })],
 }
 
