@@ -12,11 +12,11 @@ main::after {
 }
 
 .loader {
-    @apply flex absolute z-10 top-0 left-0 h-[6rem] w-full items-center justify-center text-3xl transition-all opacity-0;
+    @apply flex absolute z-0 top-0 left-0 h-[6rem] w-full items-center justify-center text-3xl transition-all opacity-0;
 }
 
 .loader.active {
-    @apply opacity-100;
+    @apply z-50 opacity-100;
 }
 
 .page-container {
@@ -32,7 +32,7 @@ main::after {
 }
 
 #search-results-list {
-    @apply flex-col dark:bg-gray-600/30 dark:text-white light:bg-gray-50/30 light:text-black backdrop-blur-md shadow-lg rounded-2xl border dark:border-gray-600/40 mt-8 p-4 opacity-0;
+    @apply z-10 flex-col dark:bg-gray-600/30 dark:text-white light:bg-gray-50/30 light:text-black backdrop-blur-md shadow-lg rounded-2xl border dark:border-gray-600/40 mt-8 p-4 opacity-0;
 }
 
 #search-results-list.active {

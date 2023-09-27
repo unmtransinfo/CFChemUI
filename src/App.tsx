@@ -45,23 +45,23 @@ function App() {
         setDarkMode(darkMode => !darkMode);
     };
 
-    const fetchData = async () => {
-        setSearchResults([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            setSearchResults([]);
 
-        if (searchInput && searchInput.length) {
-            setLoader(true);
+            if (searchInput && searchInput.length) {
+                setLoader(true);
 
-            const data = await fetchSearchResults(searchInput);
+                const data = await fetchSearchResults(searchInput);
 
-            if (data.length) {
-                setSearchResults(data);
+                if (data.length) {
+                    setSearchResults(data);
+                }
             }
+
+            setLoader(false);
         }
 
-        setLoader(false);
-    }
-
-    useEffect(() => {
         fetchData();
     }, [ searchInput ]);
 
@@ -89,6 +89,7 @@ function App() {
                                 key="default"
                                 type="email"
                                 color="default"
+                                size="lg"
                                 label="Search"
                                 placeholder="Start typing"
                                 defaultValue=""
@@ -104,7 +105,6 @@ function App() {
                                         "dark:hover:bg-gray-600/50",
                                         "dark:focus:bg-gray-600/50",
                                         "dark:active:bg-gray-600/50",
-                                        "dark:group-data-[focused=true]:bg-gray-600/50",
                                     ],
                                 }}
                             />
@@ -128,6 +128,11 @@ function App() {
                                         startContent={searchResultBullet}
                                         className="search-result"
                                         color="primary"
+                                        classNames={{
+                                            base: "text-xl",
+                                            title: "text-lg",
+                                            description: "text-sm"
+                                        }}
                                     >
                                         {result.title}
                                     </ListboxItem>

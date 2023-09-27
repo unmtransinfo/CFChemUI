@@ -28,7 +28,8 @@ export default {
           background: '#041529',
           primary: {
             DEFAULT: '#30e0c9'
-          }
+          },
+          default: '#041529'
         },
       },
     }
