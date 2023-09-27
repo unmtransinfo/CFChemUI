@@ -34,6 +34,9 @@ main::after {
 #search-results-list {
     @apply z-10 flex-col dark:bg-gray-600/30 dark:text-white light:bg-gray-50/30 light:text-black backdrop-blur-md shadow-lg rounded-2xl border dark:border-gray-600/40 mt-8 p-4 opacity-0;
 }
+#search-results-list .search-result {
+    @apply transition-background;
+}
 
 #search-results-list.active {
     @apply opacity-100;

@@ -130,8 +130,8 @@ function App() {
                                         color="primary"
                                         classNames={{
                                             base: "text-xl",
-                                            title: "text-lg",
-                                            description: "text-sm"
+                                            title: "text-lg transition-colors",
+                                            description: "text-sm transition-colors"
                                         }}
                                     >
                                         {result.title}
