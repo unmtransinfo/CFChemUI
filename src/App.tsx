@@ -46,28 +46,24 @@ function App() {
     };
 
     const fetchData = async () => {
+        setSearchResults([]);
+
         if (searchInput && searchInput.length) {
-            console.log('pre', loader)
             setLoader(true);
 
             const data = await fetchSearchResults(searchInput);
 
             if (data.length) {
                 setSearchResults(data);
-            } else {
-                setSearchResults([]);
             }
-        } else {
-            setSearchResults([]);
         }
 
         setLoader(false);
-        console.log('post', loader)
     }
 
     useEffect(() => {
         fetchData();
-    }, [ searchInput, loader ]);
+    }, [ searchInput ]);
 
     const onSearchInput = (e) => {
         setSearchInput(e);
@@ -115,10 +111,7 @@ function App() {
                         </div>
                     </section>
 
-                    {/* @todo:
-                    only display when search results are returned
-                    move to component
-                    */}
+                    {/* @todo: move to component */}
                     <section id="search-results">
                         <div className={'loader ' + (loader ? 'active' : '')}>
                             <FontAwesomeIcon icon={faCircleNotch} className="text-primary animate-spin" />
