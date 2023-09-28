@@ -4,13 +4,22 @@ import {Button, Input} from "@nextui-org/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLightbulb, faLightbulbOn, faChartNetwork, faSpinner, faCircleNotch} from '@fortawesome/pro-light-svg-icons'
 import SiteHeader from "./components/SiteHeader";
-import {Listbox, ListboxItem} from "@nextui-org/react";
+import {Listbox, ListboxItem, ScrollShadow} from "@nextui-org/react";
 // import axios from "axios";
 
 const dummyData = [
     {'title': 'foo', 'desc': 'test description'},
     {'title': 'bar', 'desc': 'test description'},
-    {'title': 'foobar', 'desc': 'test description'}
+    {'title': 'foobar', 'desc': 'test description'},
+    {'title': 'foo', 'desc': 'test description'},
+    {'title': 'bar', 'desc': 'test description'},
+    {'title': 'foobar', 'desc': 'test description'},
+    {'title': 'foo', 'desc': 'test description'},
+    {'title': 'bar', 'desc': 'test description'},
+    {'title': 'foobar', 'desc': 'test description'},
+    {'title': 'foofoo', 'desc': 'test description'},
+    {'title': 'barbar', 'desc': 'test description'},
+    {'title': 'foobarfoobar', 'desc': 'test description'}
 ];
 
 async function fetchSearchResults(inputVal: string) {
@@ -116,29 +125,32 @@ function App() {
                             <FontAwesomeIcon icon={faCircleNotch} className="text-primary animate-spin" />
                         </div>
 
-                        <Listbox id="search-results-list" variant="flat" aria-label="Search Results"
-                            className={(searchResults.length ? 'active' : '') + ' gap-0 p-0'}
-                        >
-                            {
-                                searchResults.map((result, index) => (
-                                    <ListboxItem
-                                        key={index}
-                                        description={result.desc}
-                                        startContent={searchResultBullet}
-                                        className="search-result"
-                                        color="primary"
-                                        classNames={{
-                                            base: "text-xl",
-                                            title: "text-lg transition-colors",
-                                            description: "text-sm transition-colors"
-                                        }}
-                                    >
-                                        {result.title}
-                                    </ListboxItem>
-                                ))
-                            }
-                        </Listbox>
+                        <div id="search-results-container" className={(searchResults.length ? 'active' : '') + ' gap-0 p-0'}>
+                            <ScrollShadow size={100} className="scroll-shadow">
+                                <Listbox id="search-results-list" variant="flat" aria-label="Search Results">
+                                    {
+                                        searchResults.map((result, index) => (
+                                            <ListboxItem
+                                                key={index}
+                                                description={result.desc}
+                                                startContent={searchResultBullet}
+                                                className="search-result"
+                                                color="primary"
+                                                classNames={{
+                                                    base: "text-xl",
+                                                    title: "text-lg transition-colors",
+                                                    description: "text-sm transition-colors"
+                                                }}
+                                            >
+                                                {result.title}
+                                            </ListboxItem>
+                                        ))
+                                    }
+                                </Listbox>
+                            </ScrollShadow>
+                        </div>
                     </section>
+
                 </div>
 
             </div>
