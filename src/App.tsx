@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import '../dist/App.css'
+import './App.css'
 import {Button, Input} from "@nextui-org/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLightbulb, faLightbulbOn, faChartNetwork, faSpinner, faCircleNotch} from '@fortawesome/pro-light-svg-icons'
