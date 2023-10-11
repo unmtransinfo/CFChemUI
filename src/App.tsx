@@ -5,41 +5,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLightbulb, faLightbulbOn, faChartNetwork, faSpinner, faCircleNotch} from '@fortawesome/pro-light-svg-icons'
 import SiteHeader from "./components/SiteHeader";
 import {Listbox, ListboxItem, ScrollShadow} from "@nextui-org/react";
-// import axios from "axios";
-
-const dummyData = [
-    {'title': 'foo', 'desc': 'test description'},
-    {'title': 'bar', 'desc': 'test description'},
-    {'title': 'foobar', 'desc': 'test description'},
-    {'title': 'foo', 'desc': 'test description'},
-    {'title': 'bar', 'desc': 'test description'},
-    {'title': 'foobar', 'desc': 'test description'},
-    {'title': 'foo', 'desc': 'test description'},
-    {'title': 'bar', 'desc': 'test description'},
-    {'title': 'foobar', 'desc': 'test description'},
-    {'title': 'foofoo', 'desc': 'test description'},
-    {'title': 'barbar', 'desc': 'test description'},
-    {'title': 'foobarfoobar', 'desc': 'test description'}
-];
+import axios from "axios";
 
 async function fetchSearchResults(inputVal: string) {
-    // @todo: api endpoint
-    //  const apiUrl = `http://url/api/data/${inputVal}`;
+    const apiUrl = `http://localhost:8000/api/v1/search/`;
 
-    return new Promise(resolve => {
-        setTimeout(() => resolve(dummyData.filter(
-            x => x.title.includes(inputVal)
-        )), 1000);
+    return await axios.get(apiUrl, {
+        params: {
+            query: inputVal
+        }
     })
-
-    // @todo: a real fetch
-    // return await axios.get(apiUrl)
-    //     .then(promise => {
-    //         return promise.data;
-    //     })
-    //     .catch(e => {
-    //         console.error(e);
-    //     })
+        .then(promise => {
+            return promise.data;
+        })
+        .catch(e => {
+            console.error(e);
+        })
 }
 
 function App() {
@@ -132,7 +113,7 @@ function App() {
                                         searchResults.map((result, index) => (
                                             <ListboxItem
                                                 key={index}
-                                                description={result.desc}
+                                                description={(result.pert_name + ' - ' + result.moa)}
                                                 startContent={searchResultBullet}
                                                 className="search-result"
                                                 color="primary"
@@ -142,7 +123,7 @@ function App() {
                                                     description: "text-sm transition-colors"
                                                 }}
                                             >
-                                                {result.title}
+                                                {result.pert_name}
                                             </ListboxItem>
                                         ))
                                     }
