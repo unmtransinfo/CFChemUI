@@ -27,7 +27,13 @@ export default {
         colors: {
           background: '#041529',
           primary: {
+            200: '#80ffea',
             DEFAULT: '#30e0c9'
+          },
+          secondary: {
+            100: '#b7d8f9',
+            200: '#86b1db',
+            DEFAULT: '#416fa7',
           },
           default: '#041529'
         },
