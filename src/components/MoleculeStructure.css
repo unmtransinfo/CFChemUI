@@ -1,0 +1,8 @@
+.molecule-structure-svg svg rect:first-of-type {
+    fill: white !important;
+
+}
+#smile-svg{
+    display:block;
+    margin:0 auto;
+}
