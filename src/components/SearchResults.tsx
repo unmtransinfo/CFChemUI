@@ -1,7 +1,7 @@
 import {Input, Listbox, ListboxItem, ScrollShadow} from "@nextui-org/react";
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChartNetwork, faCircleNotch} from "@fortawesome/pro-light-svg-icons";
+import {faCircleNodes, faCircleNotch} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 async function fetchSearchResults(inputVal: string) {
@@ -23,7 +23,7 @@ async function fetchSearchResults(inputVal: string) {
 export default function SearchResults({ setChem }: { setChem: Dispatch<SetStateAction<object>> }) {
     const [searchInput, setSearchInput] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const searchResultBullet = <FontAwesomeIcon icon={faChartNetwork} className="text-primary mr-2" />;
+    const searchResultBullet = <FontAwesomeIcon icon={faCircleNodes} className="text-primary mr-2" />;
     const [loader, setLoader] = useState(false);
 
     useEffect(() => {
