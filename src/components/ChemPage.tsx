@@ -1,5 +1,5 @@
 import {Dispatch, SetStateAction} from "react";
-import {faArrowLeft} from "@fortawesome/pro-light-svg-icons";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function ChemPage(props: {result: object, setChem: Dispatch<SetStateAction<any>>}) {
