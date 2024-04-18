@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-main {
+page-wrapper {
     @apply relative min-h-[100vh] bg-white dark:shadow-[inset_0_5rem_5rem_0_rgb(0_0_0_/_0.7)] light:shadow-none transition-all;
 }
 
@@ -23,8 +23,12 @@ main::after {
     @apply relative z-10 w-full max-h-[40vh];
 }
 
+#search-container {
+    @apply relative z-10 md:max-w-screen-md mx-auto p-6 pt-0;
+}
+
 .page-container {
-    @apply relative z-10 md:max-w-screen-md mx-auto p-6 pt-28;
+    @apply mx-auto p-6 pt-28;
 }
 
 .glass-container {
