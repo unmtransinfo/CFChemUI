@@ -50,3 +50,34 @@ main::after {
 .btn-back {
     @apply text-xs text-primary hover:text-white transition-colors mb-4;
 }
+
+#chem-page {
+    h3 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    table.chem-details-table {
+        border: solid 1px #ccc;
+        border-radius: 8px;
+        width: 100%;
+        tr {
+            border-bottom: solid 1px #ccc;
+        }
+
+        td, th {
+            padding: 10px;
+        }
+
+        th {
+            text-align: right;
+            background: white;
+            color: black;
+            border: 1px solid #ccc;
+            width: 180px;
+        }
+
+    }
+
+}
