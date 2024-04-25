@@ -5,7 +5,7 @@ import {faCircleNodes, faCircleNotch} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 async function fetchSearchResults(inputVal: string) {
-    const apiUrl = `http://localhost:8000/api/v1/search/`;
+    const apiUrl = import.meta.env.VITE_API_HOST;
 
     return await axios.get(apiUrl, {
         params: {
