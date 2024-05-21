@@ -46,7 +46,7 @@ export default function ChemPage(props: { result: Molecule, setChem: Dispatch<Se
                             <td>{props.result.target}</td>
                         </tr>
                         <tr>
-                            <th className="font-bold">Compound Aliases:</th>
+                            <th className="font-bold text-nowrap">Compound&nbsp;Aliases:</th>
                             <td>{props.result.compound_aliases}</td>
                         </tr>
                         <tr>
