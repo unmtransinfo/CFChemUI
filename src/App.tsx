@@ -3,20 +3,24 @@ import './App.css'
 import SiteHeader from "./components/SiteHeader";
 import ChemPage from "./components/ChemPage.tsx";
 import SearchResults from "./components/SearchResults.tsx";
+import {createTheme, ThemeProvider} from "@mui/material";
+import SearchResultsTable from "./components/SearchResultsTable.tsx";
 
 function App() {
     const [chem, setChem] = useState();
+    const theme = createTheme({palette: {mode: 'dark'}});
 
     return (
-        <main className="text-foreground bg-background dark">
-            <div className="page-container">
-                <SiteHeader />
-                <section className="relative min-h-[6rem]">
-                    {(!!chem ? <ChemPage result={chem} setChem={setChem} /> : <SearchResults setChem={setChem} />)}
-                </section>
+        <ThemeProvider theme={theme}>
+            <div className="page-wrapper">
+                <div className="page-container">
+                    <SiteHeader/>
+                    {/* TODO: Refactor to use ReactRouter */}
+                    {(!!chem ? <ChemPage result={chem} setChem={setChem}/> : <SearchResults setChem={setChem}/>)}
+                </div>
             </div>
-        </main>
-    )
+        </ThemeProvider>
+    );
 }
 
 export default App
