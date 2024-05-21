@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import MoleculeStructure from "./MoleculeStructure.tsx";
 
 
-export default function ChemPage(props: { result: object, setChem: Dispatch<SetStateAction<any>> }) {
+export default function ChemPage(props: { result: Molecule, setChem: Dispatch<SetStateAction<any>> }) {
     return (
         <div id="chem-page" className="relative z-10">
             <button onClick={() => {
@@ -30,6 +30,39 @@ export default function ChemPage(props: { result: object, setChem: Dispatch<SetS
                         height={300}
                         svgMode
                     />
+                </section>
+            </div>
+            <div className="glass-container active p-3 mt-4">
+                <section>
+                    <h3>Molecule Details</h3>
+                    <table className="chem-details-table">
+                        <tbody>
+                        <tr>
+                            <th className="font-bold">MOA:</th>
+                            <td>{props.result.moa}</td>
+                        </tr>
+                        <tr>
+                            <th className="font-bold">Target:</th>
+                            <td>{props.result.target}</td>
+                        </tr>
+                        <tr>
+                            <th className="font-bold text-nowrap">Compound&nbsp;Aliases:</th>
+                            <td>{props.result.compound_aliases}</td>
+                        </tr>
+                        <tr>
+                            <th className="font-bold">SIG Count:</th>
+                            <td>{props.result.sig_count}</td>
+                        </tr>
+                        <tr>
+                            <th className="font-bold">LCS ID:</th>
+                            <td>{props.result.lcs_id}</td>
+                        </tr>
+                        <tr>
+                            <th className="font-bold">MOL ID:</th>
+                            <td>{props.result.mol_id}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </section>
             </div>
         </div>
