@@ -83,5 +83,17 @@ main::after {
         }
 
     }
+}
 
+.molecule-structure-wrapper {
+    position: relative;
+    .download-link {
+        position:absolute;
+        bottom: 5px;
+        right: 5px;
+    }
+}
+
+.btn {
+    @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
 }
