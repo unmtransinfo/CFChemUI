@@ -3,6 +3,8 @@ import _ from "lodash";
 import PropTypes from "prop-types";
 import "./MoleculeStructure.css";
 import initRDKit from "../utils/initRDKit.js";
+import {faDownload} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 class MoleculeStructure extends Component {
     static propTypes = {
@@ -166,6 +168,9 @@ class MoleculeStructure extends Component {
         }
     }
 
+    downloadLink() {
+    }
+
     render() {
         if (this.state.rdKitError) {
             return "Error loading renderer.";
@@ -185,13 +190,30 @@ class MoleculeStructure extends Component {
         </span>
             );
         } else if (this.props.svgMode) {
+            const DownloadLink = () => (
+                <a className='download-link'
+                   href={window.URL.createObjectURL(new Blob([this.state.svg], {type: "image/svg+xml"}))}
+                   download={"molecule.svg"}>
+                    <button className="btn btn-blue">
+                        <FontAwesomeIcon icon={faDownload} className="mr-2"/>
+                        Download SVG
+                    </button>
+                </a>
+            );
+
             return (
-                <div
-                    title={this.props.structure}
-                    className={"molecule-structure-svg " + (this.props.className || "")}
-                    style={{ width: this.props.width, height: this.props.height }}
-                    dangerouslySetInnerHTML={{ __html: this.state.svg }}
-                ></div>
+                <div className='molecule-structure-wrapper'>
+                    <div
+                        title={this.props.structure}
+                        className={"molecule-structure-svg " + (this.props.className || "")}
+                        style={{width: this.props.width, height: this.props.height}}
+                        dangerouslySetInnerHTML={{__html: this.state.svg}}
+                    >
+                    </div>
+
+                    <DownloadLink/>
+                </div>
+
             );
         } else {
             return (
