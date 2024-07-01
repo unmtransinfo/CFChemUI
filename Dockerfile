@@ -1,4 +1,6 @@
 FROM node:18-alpine
+ARG ASSET_ROOT='\/cfhem'
+ENV ASSET_ROOT=$ASSET_ROOT
 WORKDIR /app
 COPY . .
 RUN npm install
