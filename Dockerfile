@@ -1,5 +1,5 @@
 FROM node:18-alpine
-ARG ASSET_ROOT='\/cfhem'
+ARG ASSET_ROOT='\/cfchem'
 ENV ASSET_ROOT=$ASSET_ROOT
 WORKDIR /app
 COPY . .
