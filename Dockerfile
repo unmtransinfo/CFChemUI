@@ -1,9 +1,12 @@
-FROM node:18-alpine
-ARG ASSET_ROOT='\/cfchem'
-ENV ASSET_ROOT=$ASSET_ROOT
+FROM node:22-alpine
+
+ARG UI_PORT=5000
+
 WORKDIR /app
 COPY . .
 RUN npm install
-EXPOSE 5000:5000
+
+# EXPOSE here is really just for documentation purposes - doesn't actually do anything
+EXPOSE ${UI_PORT}
 
 CMD ["npm", "run", "dev"]
