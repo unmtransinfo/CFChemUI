@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @config '../tailwind.config.js';
 
@@ -21,97 +21,97 @@
 }
 
 page-wrapper {
-    @apply relative min-h-screen bg-white dark:shadow-[inset_0_5rem_5rem_0_rgb(0_0_0/0.7)] light:shadow-none transition-all;
+  @apply relative min-h-screen bg-white dark:shadow-[inset_0_5rem_5rem_0_rgb(0_0_0/0.7)] light:shadow-none transition-all;
 }
 
 main::after {
-    @apply h-full w-full absolute z-0 content-[''] top-0 bg-fixed bg-cover bg-center opacity-5 light:opacity-10;
-    background-image: url(/v01_molecules-53.jpg);
+  @apply h-full w-full absolute z-0 content-[''] top-0 bg-fixed bg-cover bg-center opacity-5 light:opacity-10;
+  background-image: url(/v01_molecules-53.jpg);
 }
 
 .loader {
-    @apply flex absolute z-0 top-0 left-0 h-24 w-full items-center justify-center text-3xl transition-all opacity-0;
+  @apply flex absolute z-0 top-0 left-0 h-24 w-full items-center justify-center text-3xl transition-all opacity-0;
 }
 
 .loader.active {
-    @apply z-50 opacity-100;
+  @apply z-50 opacity-100;
 }
 
 .scroll-shadow {
-    @apply relative z-10 w-full max-h-[40vh];
+  @apply relative z-10 w-full max-h-[40vh];
 }
 
 #search-container {
-    @apply relative z-10 md:max-w-(--breakpoint-md) mx-auto p-6 pt-0;
+  @apply relative z-10 md:max-w-(--breakpoint-md) mx-auto p-6 pt-0;
 }
 
 .page-container {
-    @apply mx-auto p-6 pt-28;
+  @apply mx-auto p-6 pt-28;
 }
 
 .glass-container {
-    @apply relative z-10 flex-col max-h-[80vh] dark:bg-gray-600/30 dark:text-white light:bg-gray-50/30 light:text-black backdrop-blur-md shadow-lg rounded-2xl border dark:border-gray-600/40 break-all opacity-0;
+  @apply relative z-10 flex-col max-h-[80vh] dark:bg-gray-600/30 dark:text-white light:bg-gray-50/30 light:text-black backdrop-blur-md shadow-lg rounded-2xl border dark:border-gray-600/40 break-all opacity-0;
 }
 
 .glass-container.active {
-    @apply opacity-100;
+  @apply opacity-100;
 }
 
 #btn-theme-mode {
-    @apply min-w-0 absolute top-5 right-5 h-10 w-10 bg-transparent dark:hover:bg-gray-800 light:hover:bg-gray-100 rounded-full;
+  @apply min-w-0 absolute top-5 right-5 h-10 w-10 bg-transparent dark:hover:bg-gray-800 light:hover:bg-gray-100 rounded-full;
 }
 
 #search-results-list {
-    @apply p-4;
+  @apply p-4;
 }
 
 .search-result {
-    @apply transition-background p-3;
+  @apply transition-background p-3;
 }
 
 .btn-back {
-    @apply text-xs text-primary hover:text-white transition-colors mb-4;
+  @apply text-xs text-primary hover:text-white transition-colors mb-4;
 }
 
 #chem-page {
-    h3 {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 10px;
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  table.chem-details-table {
+    border: solid 1px #ccc;
+    border-radius: 8px;
+    width: 100%;
+    tr {
+      border-bottom: solid 1px #ccc;
     }
 
-    table.chem-details-table {
-        border: solid 1px #ccc;
-        border-radius: 8px;
-        width: 100%;
-        tr {
-            border-bottom: solid 1px #ccc;
-        }
-
-        td, th {
-            padding: 10px;
-        }
-
-        th {
-            text-align: right;
-            background: white;
-            color: black;
-            border: 1px solid #ccc;
-            width: 180px;
-        }
-
+    td,
+    th {
+      padding: 10px;
     }
+
+    th {
+      text-align: right;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      width: 180px;
+    }
+  }
 }
 
 .molecule-structure-wrapper {
-    position: relative;
-    .download-link {
-        position:absolute;
-        bottom: 5px;
-        right: 5px;
-    }
+  position: relative;
+  .download-link {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
 }
 
 .btn {
-    @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-sm shadow-sm;
+  @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-sm shadow-sm;
 }

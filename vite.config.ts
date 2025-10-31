@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   const port = env.UI_PORT;
   return {
     base: `${assetRoot}/`,
-    plugins: [react(), tailwindcss(),],
+    plugins: [react(), tailwindcss()],
     server: {
       host: true,
       port: port,
