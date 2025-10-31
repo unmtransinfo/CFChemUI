@@ -20,7 +20,7 @@
     "@mui/icons-material": "^5.17.1",
     "@mui/material": "^5.17.1",
     "@mui/x-date-pickers": "^7.29.4",
-    "@nextui-org/react": "^2.1.13",
+    "@heroui/react": "2.8.5",
     "@rdkit/rdkit": "^2023.9.2-1.0.0",
     "axios": "^1.12.0",
     "framer-motion": "^12.19.1",

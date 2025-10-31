@@ -1,4 +1,4 @@
-import {Input, Listbox, ListboxItem, ScrollShadow} from "@nextui-org/react";
+import {Input, Listbox, ListboxItem, ScrollShadow} from "@heroui/react";
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleNodes, faCircleNotch} from "@fortawesome/free-solid-svg-icons";

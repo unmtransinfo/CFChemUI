@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import MoleculeStructure from "./MoleculeStructure.tsx";
 import {CSVLink} from 'react-csv';
 import {Molecule} from "../models/Molecule.ts";
-import {Button, Link, Tooltip} from "@nextui-org/react";
+import {Button, Link, Tooltip} from "@heroui/react";
 
 
 export default function ChemPage(props: { result: Molecule, setChem: Dispatch<SetStateAction<any>> }) {
