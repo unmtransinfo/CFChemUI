@@ -1,9 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 page-wrapper {
-    @apply relative min-h-[100vh] bg-white dark:shadow-[inset_0_5rem_5rem_0_rgb(0_0_0_/_0.7)] light:shadow-none transition-all;
+    @apply relative min-h-screen bg-white dark:shadow-[inset_0_5rem_5rem_0_rgb(0_0_0/0.7)] light:shadow-none transition-all;
 }
 
 main::after {
@@ -12,7 +30,7 @@ main::after {
 }
 
 .loader {
-    @apply flex absolute z-0 top-0 left-0 h-[6rem] w-full items-center justify-center text-3xl transition-all opacity-0;
+    @apply flex absolute z-0 top-0 left-0 h-24 w-full items-center justify-center text-3xl transition-all opacity-0;
 }
 
 .loader.active {
@@ -24,7 +42,7 @@ main::after {
 }
 
 #search-container {
-    @apply relative z-10 md:max-w-screen-md mx-auto p-6 pt-0;
+    @apply relative z-10 md:max-w-(--breakpoint-md) mx-auto p-6 pt-0;
 }
 
 .page-container {
@@ -95,5 +113,5 @@ main::after {
 }
 
 .btn {
-    @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
+    @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-sm shadow-sm;
 }
