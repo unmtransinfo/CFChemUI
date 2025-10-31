@@ -10,7 +10,6 @@ import SearchResultsTable from "./SearchResultsTable.tsx";
 
 async function fetchSearchResults(inputVal: string) {
   const apiUrl = import.meta.env.VITE_API_HOST;
-  console.log(apiUrl);
   return await axios
     .get(apiUrl, {
       params: {
